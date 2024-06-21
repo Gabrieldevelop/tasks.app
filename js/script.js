@@ -1,9 +1,9 @@
 'use strict';
 
-// Reference: https://todolistme.net/
+console.log('Morning');
 
 // Selecting elements
-const formTask = document.querySelector('.formTask');
+/* const formTask = document.querySelector('.formTask');
 const taskContainer = document.querySelector('.tasks__container');
 const deletebtn = document.querySelector('.deleteTask');
 const welcomeMessage = document.querySelector('.welcomeMessage');
@@ -68,12 +68,6 @@ const updateTask = function () {
     ? (welcomeMessage.textContent =
         'Dear user, these tasks need to be fulfilled 😉')
     : (welcomeMessage.textContent = 'Add any task that you want to 😊');
-  /*  if (taskArr.length > 0) {
-    welcomeMessage.textContent =
-      'Dear user, these tasks need to be fulfilled 😉';
-  } else {
-    welcomeMessage.textContent = 'Welcome, add any task that you want to 😊';
-  } */
 };
 
 // Delete task
@@ -103,3 +97,4 @@ const init = function () {
 window.addEventListener('load', function () {
   init();
 });
+ */
