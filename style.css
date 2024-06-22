@@ -3,6 +3,7 @@
 :root {
   --main__color: brown;
   --white: #fff;
+  --black: #111;
 }
 
 * {
@@ -10,6 +11,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.error__message {
+  color: #ff0000;
+  display: none;
 }
 
 .banner {
@@ -22,15 +32,16 @@
       rgba(255, 255, 255, 0.193),
       rgba(0, 0, 0, 0.284)
     ),
-    url('imgs/bg_4.jpg');
+    url('imgs/bg_3.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .container {
-  max-height: 60vh;
+  width: 100%;
   max-width: 600px;
+  max-height: 60vh;
   background: var(--white);
   overflow-x: hidden;
   overflow-y: auto;
@@ -59,27 +70,77 @@
 }
 
 .banner .container .formTask {
-  /*  display: flex;
-  align-items: center;
-  justify-content: center; */
+  width: 100%;
   margin-bottom: 10px;
   margin-top: 10px;
-  position: relative;
+  display: flex;
 }
 
 .banner .container .formTask .taskInput {
-  width: 400px;
-  padding: 8px 5px;
   outline: none;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1.5px solid var(--black);
+  width: 100%;
+  padding: 8px 5px;
 }
 
 .banner .container .formTask .addTask {
-  padding: 8px 20px;
+  padding: 3px 30px;
+  margin-left: 10px;
   cursor: pointer;
+  background: var(--main__color);
+  color: var(--white);
+  border: 1px solid #111;
+  outline: none;
+  transition: background 0.3s ease-in-out;
+}
+
+.banner .container .formTask .addTask:hover {
+  background: transparent;
+  color: var(--black);
+}
+
+main {
+  width: 100%;
 }
 
 main .tasks__container .task {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+main .tasks__container .task .delete__btn {
+  padding: 5px 22px;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  transition: background 0.3s ease-in-out;
+}
+
+main .tasks__container .task .delete__btn:hover {
+  background: var(--main__color);
+  color: var(--white);
+}
+
+/* Responsive */
+
+@media (max-width: 530px) {
+  .banner .container .welcomeMessage {
+    font-size: 15px;
+  }
+  .container {
+    max-width: 400px;
+  }
+  .banner .container .formTask {
+    width: 100%;
+    flex-direction: column;
+  }
+  .banner .container .formTask .addTask {
+    margin-top: 10px;
+  }
+
+  .banner .container .formTask .addTask {
+    margin-left: 0px;
+  }
 }

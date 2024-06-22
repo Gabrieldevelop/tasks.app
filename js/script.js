@@ -1,12 +1,10 @@
 'use strict';
 
-console.log('Morning');
-
 // Selecting elements
-/* const formTask = document.querySelector('.formTask');
+const formTask = document.querySelector('.formTask');
 const taskContainer = document.querySelector('.tasks__container');
-const deletebtn = document.querySelector('.deleteTask');
 const welcomeMessage = document.querySelector('.welcomeMessage');
+const errorMessageEle = document.querySelector('.error__message');
 
 let taskInputValue = document.querySelector('.taskInput');
 let taskArr = [];
@@ -15,12 +13,14 @@ formTask.addEventListener('submit', function (e) {
   // Do not reload page
   e.preventDefault();
 
+  // Show error message
+  showErrorMsg('Add a correct task');
+
   // Guard
   if (!taskInputValue.value) return;
 
   // push task to arrayTask
   taskArr.unshift(taskInputValue.value);
-  console.log(taskArr);
 
   // Add task to localStorage
   persistTasks();
@@ -48,7 +48,7 @@ const updateTask = function () {
 
     // Add classes to each task
     listItem.classList.add('task');
-    createDeleteButton.classList.add('btn_deleteTask');
+    createDeleteButton.classList.add('delete__btn');
     createDeleteButton.classList.add('btn');
 
     // Add btn to li elements
@@ -64,16 +64,18 @@ const updateTask = function () {
   });
 
   // Update welcome message based on tasks
-  taskArr.length > 0
-    ? (welcomeMessage.textContent =
-        'Dear user, these tasks need to be fulfilled 😉')
-    : (welcomeMessage.textContent = 'Add any task that you want to 😊');
+  const isTask =
+    taskArr.length > 0
+      ? (welcomeMessage.textContent =
+          'Dear user, these tasks needs to be fulfilled 😉')
+      : (welcomeMessage.textContent = 'Add any task that you want to 😊');
+
+  return isTask;
 };
 
 // Delete task
 const deleteTask = function (index) {
   const deletedItem = taskArr.splice(index, 1);
-  console.log(deletedItem);
 
   // Update tasks in localStorage
   persistTasks();
@@ -87,6 +89,15 @@ const persistTasks = function () {
   localStorage.setItem('tasks', JSON.stringify(taskArr));
 };
 
+const showErrorMsg = function (message) {
+  if (!taskInputValue.value) {
+    errorMessageEle.style.display = 'block';
+    errorMessageEle.textContent = message;
+  } else {
+    errorMessageEle.style.display = 'none';
+  }
+};
+
 const init = function () {
   const storage = localStorage.getItem('tasks');
   if (storage) taskArr = JSON.parse(storage);
@@ -97,4 +108,3 @@ const init = function () {
 window.addEventListener('load', function () {
   init();
 });
- */

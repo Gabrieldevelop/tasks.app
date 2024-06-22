@@ -12,9 +12,15 @@
         <h1 class="welcomeMessage">Add any task that you want to 😊</h1>
 
         <form class="formTask">
-          <input type="text" class="taskInput" placeholder="Your task" />
+          <input
+            type="text"
+            class="taskInput"
+            placeholder="e.g.  Renew my driver licence"
+            autofocus
+          />
           <button class="addTask">Add</button>
         </form>
+        <span class="error__message">Error</span>
 
         <main>
           <ul class="tasks__container">
@@ -23,7 +29,7 @@
               <button class="delete__btn">Delete</button>
             </li>
             <li class="task">
-              My task
+              Renew my licence
               <button class="delete__btn">Delete</button>
             </li>
           </ul>
