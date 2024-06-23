@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 :root {
-  --main__color: brown;
+  --main__color: #a52a2a;
   --white: #fff;
   --black: #111;
 }
@@ -32,7 +32,7 @@ body {
       rgba(255, 255, 255, 0.193),
       rgba(0, 0, 0, 0.284)
     ),
-    url('imgs/bg_3.jpg');
+    url('imgs/bg_1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
