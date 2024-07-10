@@ -128,32 +128,6 @@ main .tasks__container .task .update__btn:hover {
   color: var(--white);
 }
 
-/* Responsive */
-
-@media (max-width: 530px) {
-  .banner .container .welcomeMessage {
-    font-size: 15px;
-  }
-  .container {
-    max-width: 400px;
-  }
-  .banner .container .formTask {
-    /* width: 100%; */
-    flex-direction: column;
-  }
-  .banner .container .formTask .addTask {
-    margin-top: 10px;
-  }
-
-  .banner .container .formTask .addTask {
-    margin-left: 0px;
-  }
-
-  .form_window form {
-    flex-direction: column;
-  }
-}
-
 .overlay {
   width: 100%;
   height: 100%;
@@ -169,6 +143,9 @@ main .tasks__container .task .update__btn:hover {
   display: none;
 }
 
+/* width: 100%;
+max-width: 700px; */
+
 .new_form-container {
   position: absolute;
   top: 50%;
@@ -176,6 +153,7 @@ main .tasks__container .task .update__btn:hover {
   transform: translate(-50%, -50%);
   z-index: 3;
   padding: 10px;
+  width: 700px;
 }
 
 .new_form-container.hidden {
@@ -183,9 +161,8 @@ main .tasks__container .task .update__btn:hover {
 }
 
 .new_form-container .form_window {
+  width: 100%;
   background: var(--white);
-  width: 700px;
-  max-width: 100%;
   border-radius: 5px;
   padding: 5px;
 }
@@ -236,4 +213,46 @@ main .tasks__container .task .update__btn:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   transform: translateY(-2px);
+}
+
+/* Responsive */
+
+@media (max-width: 705px) {
+  .new_form-container {
+    width: 550px;
+  }
+}
+
+@media (max-width: 550px) {
+  .banner .container .welcomeMessage {
+    font-size: 15px;
+  }
+  .container {
+    max-width: 400px;
+  }
+  .banner .container .formTask {
+    /* width: 100%; */
+    flex-direction: column;
+  }
+  .banner .container .formTask .addTask {
+    margin-top: 10px;
+  }
+
+  .banner .container .formTask .addTask {
+    margin-left: 0px;
+  }
+
+  .new_form-container {
+    width: 400px;
+  }
+
+  .form_window form {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .new_form-container {
+    width: 350px;
+  }
 }
