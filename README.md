@@ -17,3 +17,4 @@ This has been an enjoyable release. Users now can update their existing taks wit
 1- Add background features. User could change the background of the site
 2- Color change feature
 3- Fix large tasks bug
+4- Add icons to delete or update taks instead of native buttons
