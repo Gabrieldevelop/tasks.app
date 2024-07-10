@@ -5,6 +5,14 @@ const formTask = document.querySelector('.formTask');
 const taskContainer = document.querySelector('.tasks__container');
 const welcomeMessage = document.querySelector('.welcomeMessage');
 const errorMessageEle = document.querySelector('.error__message');
+const newFormContainer = document.querySelector('.new_form-container');
+const newFormTask = document.querySelector('.new_form-Task');
+const updateTaskInput = document.querySelector('.update_task-input');
+const updateTaskBtn = document.querySelector('.update_task-btn');
+const titleUpdatedTask = document.querySelector('.title_updated-task');
+const overlay = document.querySelector('.overlay');
+
+let taskIndexToUpdate;
 
 let taskInputValue = document.querySelector('.taskInput');
 let taskArr = [];
@@ -26,13 +34,13 @@ formTask.addEventListener('submit', function (e) {
   persistTasks();
 
   // Update DOM and taskArr
-  updateTask();
+  renderTasks();
 
   // Clean input field
   taskInputValue.value = '';
 });
 
-const updateTask = function () {
+const renderTasks = function () {
   // Clean before insert new tasks
   taskContainer.innerHTML = '';
 
@@ -40,19 +48,28 @@ const updateTask = function () {
   taskArr.forEach((task, index, array) => {
     // Create elements for each task
     let listItem = document.createElement('li');
+    const createDivBtnsContainer = document.createElement('div');
     const createDeleteButton = document.createElement('button');
+    const createUpdateButton = document.createElement('button');
 
     // add array task to li elements
     listItem.textContent = task;
     createDeleteButton.textContent = 'Delete';
+    createUpdateButton.textContent = 'Update';
 
     // Add classes to each task
     listItem.classList.add('task');
     createDeleteButton.classList.add('delete__btn');
-    createDeleteButton.classList.add('btn');
+    createUpdateButton.classList.add('update__btn');
+    createDivBtnsContainer.classList.add('btns__tasks--container');
+
+    createDivBtnsContainer.append(createDeleteButton);
+    createDivBtnsContainer.append(createUpdateButton);
+    listItem.append(createDivBtnsContainer);
 
     // Add btn to li elements
-    listItem.append(createDeleteButton);
+    // listItem.append(createDeleteButton);
+    // listItem.append(createUpdateButton);
 
     // Show li elements
     taskContainer.append(listItem);
@@ -60,6 +77,23 @@ const updateTask = function () {
     // Functionlity to delete task
     createDeleteButton.addEventListener('click', function () {
       deleteTask(index);
+    });
+
+    //Functionality to update task
+    createUpdateButton.addEventListener('click', function (e) {
+      console.log('task updated', e);
+
+      // Localize task element
+      taskIndexToUpdate = index;
+      console.log(taskIndexToUpdate);
+      updateTaskInput.value = taskArr[taskIndexToUpdate];
+
+      titleUpdatedTask.textContent = `Update your task at position: ${
+        taskIndexToUpdate + 1
+      }`;
+
+      // Show new form task
+      showNewFormTask();
     });
   });
 
@@ -76,13 +110,14 @@ const updateTask = function () {
 // Delete task
 const deleteTask = function (index) {
   const deletedItem = taskArr.splice(index, 1);
+  console.log(deletedItem);
 
   // Update tasks in localStorage
   persistTasks();
 
   // Each time an element is deleted, update the UI
   // Also re-render elements
-  updateTask();
+  renderTasks();
 };
 
 const persistTasks = function () {
@@ -102,9 +137,45 @@ const init = function () {
   const storage = localStorage.getItem('tasks');
   if (storage) taskArr = JSON.parse(storage);
 
-  updateTask();
+  renderTasks();
 };
 
 window.addEventListener('load', function () {
   init();
+});
+
+//  Update tasks code
+
+//Hide formContainer
+const hideNewFormTask = function () {
+  newFormContainer.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+overlay.addEventListener('click', hideNewFormTask);
+
+// Show formContainer
+const showNewFormTask = function () {
+  overlay.classList.remove('hidden');
+  newFormContainer.classList.remove('hidden');
+};
+
+newFormTask.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  console.log(e, updateTaskInput.value);
+
+  // Update the task in the array
+  if (taskIndexToUpdate !== null) {
+    taskArr[taskIndexToUpdate] = updateTaskInput.value;
+    console.log(taskArr);
+
+    // Persist the updated tasks
+    persistTasks();
+
+    // Re-Render tasks
+    renderTasks();
+
+    // Hide NEW form tasks container and overlay
+    hideNewFormTask();
+  }
 });

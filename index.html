@@ -38,14 +38,43 @@
             class="taskInput"
             placeholder="e.g.  Renew my driver licence"
             autofocus
+            maxlength="60"
+            autocomplete="off"
           />
           <button class="addTask">Add</button>
         </form>
         <span class="error__message">Error</span>
 
         <main>
-          <ul class="tasks__container"></ul>
+          <ul class="tasks__container">
+            <li class="task">
+              My Task
+              <div class="btns__tasks--container">
+                <button class="btn delete__btn">Delete</button>
+                <button class="btn update__btn">Update</button>
+              </div>
+            </li>
+          </ul>
         </main>
+      </div>
+    </section>
+    <div class="overlay hidden"></div>
+
+    <section class="new_form-container hidden">
+      <div class="form_window">
+        <h3 class="title_updated-task">Update your task at position: 3</h3>
+        <form class="new_form-Task">
+          <input
+            type="text"
+            name="update_task"
+            id="update_task"
+            maxlength="60"
+            autocomplete="off"
+            class="update_task-input"
+            placeholder="Write your update here"
+          />
+          <button class="update_task-btn">Update 🤗</button>
+        </form>
       </div>
     </section>
 
